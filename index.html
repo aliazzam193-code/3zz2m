@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>3zz2m | Portfolio</title>
+
+<style>
+:root {
+  --bg:#080808;
+  --card:#121210;
+  --gold:#d8b56a;
+  --text:#f5f1e8;
+  --muted:#aaa69c;
+  --line:rgba(216,181,106,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.7;
+  background-image:radial-gradient(ellipse at 15% 10%,#d8b56a12,transparent 35%);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+.gold{color:var(--gold)}
+.muted{color:var(--muted)}
+header{
+  height:72px;position:fixed;inset:0 0 auto;z-index:20;
+  background:#080808d9;backdrop-filter:blur(15px);
+  border-bottom:1px solid #d8b56a22;
+}
+nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-size:27px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--gold)}
+.links{display:flex;align-items:center;gap:24px;font-size:14px}
+.links a:hover{color:var(--gold)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.lang,.menu{
+  background:#15140f;color:var(--gold);border:1px solid var(--line);
+  border-radius:30px;padding:9px 13px
+}
+.menu{display:none}
+.btn{
+  display:inline-block;padding:11px 19px;border-radius:30px;
+  border:1px solid var(--gold);font-weight:bold;font-size:14px;
+  transition:.25s
+}
+.btn.primary{background:var(--gold);color:#080808}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px #d8b56a22}
+.eyebrow{color:var(--gold);font-size:12px;letter-spacing:3px;font-weight:bold}
+.eyebrow:before{content:"";display:inline-block;width:25px;height:1px;background:var(--gold);vertical-align:middle;margin-inline-end:10px}
+section{padding:100px 0}
+#home{min-height:100vh;display:flex;align-items:center;padding-top:125px}
+.hero-copy{width:66%;position:relative;z-index:2}
+.status{
+  display:inline-flex;align-items:center;gap:9px;
+  border:1px solid var(--line);padding:7px 12px;border-radius:30px;
+  color:#ddd5c5;font-size:12px;margin-bottom:24px
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#a9d58d;box-shadow:0 0 10px #a9d58d}
+h1{font-size:clamp(50px,8vw,94px);line-height:1.02;letter-spacing:-5px;margin:15px 0;font-weight:900}
+h1 .gold{display:block}
+.role{font-size:clamp(17px,2.5vw,24px);font-weight:bold;margin:20px 0 8px}
+#typing{color:var(--gold)}
+.cursor{color:var(--gold);animation:blink .7s infinite}
+.description{max-width:570px;color:var(--muted);font-size:16px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
+.socials{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.socials a{
+  width:39px;height:39px;border:1px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;font-size:11px;font-weight:bold;
+  transition:.2s
+}
+.socials a:hover{background:var(--gold);color:#080808;transform:translateY(-4px)}
+/* Your photo stays fixed on screen while scrolling */
+.photo{
+  position:fixed;z-index:5;right:max(25px,calc((100vw - 1120px)/2));
+  top:50%;transform:translateY(-50%);width:clamp(190px,23vw,275px);
+  pointer-events:none;
+}
+.photo-frame{
+  padding:7px;border:1px solid var(--gold);
+  border-radius:160px 160px 25px 25px;
+  background:linear-gradient(145deg,#d8b56a35,#111);
+  box-shadow:0 0 0 7px #d8b56a09,0 20px 65px #000;
+}
+.photo img{
+  display:block;width:100%;aspect-ratio:3/4.5;object-fit:cover;
+  object-position:25% center;border-radius:155px 155px 19px 19px;
+}
+.photo-label{
+  text-align:center;color:var(--gold);font-size:11px;
+  letter-spacing:2px;margin-top:12px;font-weight:bold
+}
+h2{font-size:clamp(32px,5vw,52px);line-height:1.15;margin:12px 0}
+.section-intro{color:var(--muted);max-width:650px;margin-bottom:35px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{
+  background:linear-gradient(145deg,#ffffff09,#ffffff02);
+  border:1px solid var(--line);border-radius:20px;padding:25px;
+  transition:transform .25s,border-color .25s
+}
+.card:hover{transform:translateY(-5px);border-color:var(--gold)}
+.card h3{margin:8px 0;font-size:19px}
+.card p{color:var(--muted);font-size:14px;margin:0}
+.symbol{
+  width:43px;height:43px;border:1px solid var(--line);
+  border-radius:13px;display:grid;place-items:center;
+  color:var(--gold);background:#d8b56a10;font-weight:900
+}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{padding:22px;border:1px solid var(--line);border-radius:16px;background:#d8b56a08}
+.stat strong{display:block;color:var(--gold);font-size:25px}
+.stat span{font-size:12px;color:var(--muted)}
+.project-art{
+  height:145px;border:1px solid var(--line);border-radius:14px;
+  display:grid;place-items:center;margin-bottom:17px;
+  background:radial-gradient(circle,#d8b56a20,transparent 65%),#0b0b0a;
+  color:var(--gold);font-size:28px;font-weight:900
+}
+.tag{display:inline-block;border:1px solid var(--line);padding:3px 9px;border-radius:20px;font-size:11px;color:#d8c9a7;margin:12px 5px 0 0}
+.demo{display:block;color:var(--gold);font-size:11px;font-weight:bold;margin-top:12px;letter-spacing:1px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.contact-link{
+  display:flex;gap:13px;align-items:center;padding:15px;
+  border:1px solid var(--line);border-radius:14px;background:#ffffff04;
+  overflow-wrap:anywhere;transition:.2s
+}
+.contact-link:hover{border-color:var(--gold)}
+.contact-icon{
+  flex-shrink:0;width:39px;height:39px;display:grid;place-items:center;
+  background:#d8b56a12;color:var(--gold);border-radius:11px;font-weight:bold
+}
+.contact-link small{display:block;color:var(--muted);font-size:11px}
+.contact-link strong{font-size:13px}
+footer{border-top:1px solid #d8b56a22;padding:25px 0;color:var(--muted);font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+@keyframes blink{50%{opacity:0}}
+html[dir="rtl"] body{font-family:Tahoma,Arial,sans-serif}
+html[dir="rtl"] .photo{right:auto;left:max(25px,calc((100vw - 1120px)/2))}
+html[dir="rtl"] .hero-copy{margin-left:auto}
+html[dir="rtl"] .links{direction:rtl}
+html[dir="rtl"] .eyebrow:before{margin-inline-start:10px;margin-inline-end:0}
+@media(max-width:900px){
+  .photo{width:190px;right:20px}
+  html[dir="rtl"] .photo{left:20px}
+  .hero-copy{width:72%}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+  .container{width:calc(100% - 32px)}
+  .links{
+    display:none;position:absolute;top:72px;left:16px;right:16px;
+    padding:12px;background:#111;border:1px solid var(--line);
+    border-radius:15px;flex-direction:column;align-items:stretch;gap:0
+  }
+  .links.open{display:flex}
+  .links a{padding:11px}
+  .menu{display:inline-block}
+  .nav-cta{display:none}
+  #home{min-height:auto;padding-top:115px;padding-bottom:60px}
+  .hero-copy{width:100%}
+  h1{font-size:58px;letter-spacing:-3px}
+  .description{font-size:14px;max-width:90%}
+  section{padding:70px 0}
+  /* Small floating photo remains fixed on phones too */
+  .photo{
+    top:auto;bottom:15px;right:12px;left:auto;transform:none;
+    width:75px;z-index:30
+  }
+  html[dir="rtl"] .photo{left:12px;right:auto}
+  .photo-frame{padding:3px;border-radius:50%;box-shadow:0 6px 25px #000}
+  .photo img{aspect-ratio:1;border-radius:50%;object-position:25% center}
+  .photo-label{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .project-art{height:160px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">3zz<span>2m.</span></a>
+    <div class="links" id="links">
+      <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="#about" data-en="About" data-ar="عني">About</a>
+      <a href="#skills" data-en="Skills" data-ar="المهارات">Skills</a>
+      <a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a>
+      <a href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="lang" id="lang">عربي</button>
+      <a class="btn primary nav-cta" href="#contact" data-en="Let's Talk ↗" data-ar="تواصل معي ↗">Let's Talk ↗</a>
+      <button class="menu" id="menu" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+</header>
+
+
+
+<main>
+<section id="home">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="status reveal"><span class="dot"></span><span data-en="Student • Learning every day" data-ar="طالب • بتعلم كل يوم">Student • Learning every day</span></div>
+      <div class="eyebrow reveal" data-en="WELCOME TO MY PORTFOLIO" data-ar="أهلًا بيك في موقعي الشخصي">WELCOME TO MY PORTFOLIO</div>
+      <h1 class="reveal"><span data-en="Hello, I'm" data-ar="أهلًا، أنا">Hello, I'm</span><span class="gold">3zz2m</span></h1>
+      <div class="role reveal"><span data-en="Aspiring " data-ar="مطور طموح — ">Aspiring </span><span id="typing">Front-End Developer</span><span class="cursor">|</span></div>
+      <p class="description reveal" data-en="I'm a student passionate about programming and building digital experiences. I'm currently developing my HTML and CSS skills and working toward becoming a professional web developer." data-ar="أنا طالب عندي شغف بالبرمجة وبناء تجارب رقمية مميزة. حاليًا بطوّر مهاراتي في HTML وCSS، وبشتغل على نفسي عشان أبقى مطور مواقع محترف في المستقبل.">I'm a student passionate about programming and building digital experiences. I'm currently developing my HTML and CSS skills and working toward becoming a professional web developer.</p>
+      <div class="actions reveal">
+        <a class="btn primary" href="#projects"><span data-en="Explore My Work" data-ar="شوف مشاريعي">Explore My Work</span> ↗</a>
+        <a class="btn" href="#contact" data-en="Contact Me" data-ar="كلمني">Contact Me</a>
+      </div>
+      <div class="socials reveal">
+        <a href="https://www.facebook.com/share/1CZNycMNtA/?mibextid=wwXIfr" target="_blank" rel="noopener">FB</a>
+        <a href="https://instagram.com/3liazzam1?psln=MW96N2hwNXNxemc5OQ%3D%3D&utm_source=qr" target="_blank" rel="noopener">IG</a>
+        <a href="https://www.tiktok.com/@3liazzam1?_r=1&_t=ZS-9AX56ziHq6h" target="_blank" rel="noopener">TK</a>
+        <a href="https://wa.me/201012828592" target="_blank" rel="noopener">WA</a>
+        <a href="mailto:aliazzam193@gmail.com">@</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="eyebrow reveal" data-en="A LITTLE ABOUT ME" data-ar="نبذة عني">A LITTLE ABOUT ME</div>
+    <h2 class="reveal" data-en="Learning today. <span class='gold'>Building tomorrow.</span>" data-ar="بتعلم النهارده، <span class='gold'>وببني للمستقبل.</span>">Learning today. <span class="gold">Building tomorrow.</span></h2>
+    <p class="section-intro reveal" data-en="I'm a student interested in software engineering and web development. I believe in learning step by step, practicing consistently, and improving with every project." data-ar="أنا طالب مهتم بهندسة البرمجيات وتطوير المواقع. مؤمن إن التعلم خطوة بخطوة والتدريب المستمر بيخلوني أتطور مع كل مشروع.">I'm a student interested in software engineering and web development. I believe in learning step by step, practicing consistently, and improving with every project.</p>
+    <div class="about-grid">
+      <article class="card reveal">
+        <h3 data-en="My journey" data-ar="رحلتي">My journey</h3>
+        <p class="muted" data-en="I'm currently learning HTML and CSS and building a strong foundation in web development. My long-term goal is to learn more technologies and grow into a full-stack developer." data-ar="حاليًا بتعلم HTML وCSS وببني أساس قوي في تطوير المواقع. هدفي على المدى الطويل إني أتعلم تقنيات أكتر وأتطور لمطور Full-Stack.">I'm currently learning HTML and CSS and building a strong foundation in web development. My long-term goal is to learn more technologies and grow into a full-stack developer.</p>
+      </article>
+      <div class="stats reveal">
+        <div class="stat"><strong>HTML</strong><span data-en="Learning now" data-ar="بتعلمها حاليًا">Learning now</span></div>
+        <div class="stat"><strong>CSS</strong><span data-en="Learning now" data-ar="بتعلمها حاليًا">Learning now</span></div>
+        <div class="stat"><strong>01</strong><span data-en="Step at a time" data-ar="خطوة في كل مرة">Step at a time</span></div>
+        <div class="stat"><strong>∞</strong><span data-en="Room to grow" data-ar="فرص للتطور">Room to grow</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="eyebrow reveal" data-en="WHAT I'M LEARNING" data-ar="المهارات">WHAT I'M LEARNING</div>
+    <h2 class="reveal" data-en="Skills & <span class='gold'>technologies.</span>" data-ar="مهاراتي <span class='gold'>والتقنيات.</span>">Skills & <span class="gold">technologies.</span></h2>
+    <p class="section-intro reveal" data-en="These reflect my current learning journey. I'll add more technologies as I study and practice them." data-ar="دي المهارات اللي بشتغل على تطويرها حاليًا، وهضيف تقنيات تانية لما أتعلمها وأتدرب عليها.">These reflect my current learning journey. I'll add more technologies as I study and practice them.</p>
+    <div class="grid">
+      <article class="card reveal"><div class="symbol">5</div><h3>HTML5</h3><p data-en="Building the structure of web pages." data-ar="بناء هيكل صفحات الويب.">Building the structure of web pages.</p></article>
+      <article class="card reveal"><div class="symbol">3</div><h3>CSS3</h3><p data-en="Styling layouts, colors, and page designs." data-ar="تنسيق الصفحات والألوان والتصميمات.">Styling layouts, colors, and page designs.</p></article>
+      <article class="card reveal"><div class="symbol">R</div><h3 data-en="Responsive Design" data-ar="التصميم المتجاوب">Responsive Design</h3><p data-en="Learning layouts for phones and computers." data-ar="تعلم تصميم يناسب الموبايل والكمبيوتر.">Learning layouts for phones and computers.</p></article>
+      <article class="card reveal"><div class="symbol">JS</div><h3>JavaScript</h3><p data-en="A future learning goal for interactive pages." data-ar="هدف قادم لتعلم الصفحات التفاعلية.">A future learning goal for interactive pages.</p></article>
+      <article class="card reveal"><div class="symbol">&lt;/&gt;</div><h3>VS Code</h3><p data-en="Practicing writing and organizing code." data-ar="التدرب على كتابة الكود وتنظيمه.">Practicing writing and organizing code.</p></article>
+      <article class="card reveal"><div class="symbol">↗</div><h3 data-en="Problem Solving" data-ar="حل المشكلات">Problem Solving</h3><p data-en="Learning by trying, testing, and improving." data-ar="التعلم بالتجربة والاختبار والتطوير.">Learning by trying, testing, and improving.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="eyebrow reveal" data-en="PRACTICE PROJECTS" data-ar="مشاريع للتدريب">PRACTICE PROJECTS</div>
+    <h2 class="reveal" data-en="Creative <span class='gold'>concepts.</span>" data-ar="أفكار <span class='gold'>للتطبيق.</span>">Creative <span class="gold">concepts.</span></h2>
+    <p class="section-intro reveal" data-en="These are demo concepts for practice and inspiration, not completed client projects." data-ar="دي نماذج تجريبية للتدريب والإلهام، مش مشاريع منفذة لعملاء.">These are demo concepts for practice and inspiration, not completed client projects.</p>
+    <div class="grid">
+      <article class="card reveal"><div class="project-art">01 / WEB</div><h3 data-en="Personal Portfolio" data-ar="موقع شخصي">Personal Portfolio</h3><p data-en="A stylish personal website concept." data-ar="فكرة موقع شخصي بتصميم أنيق.">A stylish personal website concept.</p><span class="tag">HTML</span><span class="tag">CSS</span><span class="demo" data-en="DEMO CONCEPT" data-ar="نموذج تجريبي">DEMO CONCEPT</span></article>
+      <article class="card reveal"><div class="project-art">02 / SHOP</div><h3 data-en="Luxury Storefront" data-ar="واجهة متجر فخم">Luxury Storefront</h3><p data-en="A sample layout for an accessories store." data-ar="تصميم تجريبي لمتجر إكسسوارات.">A sample layout for an accessories store.</p><span class="tag">HTML</span><span class="tag">CSS</span><span class="demo" data-en="DEMO CONCEPT" data-ar="نموذج تجريبي">DEMO CONCEPT</span></article>
+      <article class="card reveal"><div class="project-art">03 / APP</div><h3 data-en="Useful Web App" data-ar="تطبيق ويب مفيد">Useful Web App</h3><p data-en="A concept for a simple, useful interface." data-ar="فكرة واجهة بسيطة ومفيدة.">A concept for a simple, useful interface.</p><span class="tag">UI</span><span class="tag">Practice</span><span class="demo" data-en="DEMO CONCEPT" data-ar="نموذج تجريبي">DEMO CONCEPT</span></article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="eyebrow reveal" data-en="GET IN TOUCH" data-ar="خلينا نتواصل">GET IN TOUCH</div>
+    <h2 class="reveal" data-en="Let's <span class='gold'>connect.</span>" data-ar="خلينا <span class='gold'>نتواصل.</span>">Let's <span class="gold">connect.</span></h2>
+    <p class="section-intro reveal" data-en="Feel free to reach out through any of my accounts." data-ar="تقدر تتواصل معايا من خلال أي حساب من حساباتي.">Feel free to reach out through any of my accounts.</p>
+    <div class="contact-grid">
+      <a class="contact-link reveal" href="mailto:aliazzam193@gmail.com"><span class="contact-icon">@</span><span><small>Email</small><strong>aliazzam193@gmail.com</strong></span></a>
+      <a class="contact-link reveal" href="https://wa.me/201012828592" target="_blank" rel="noopener"><span class="contact-icon">WA</span><span><small>WhatsApp</small><strong>+20 101 282 8592</strong></span></a>
+      <a class="contact-link reveal" href="https://www.facebook.com/share/1CZNycMNtA/?mibextid=wwXIfr" target="_blank" rel="noopener"><span class="contact-icon">FB</span><span><small>Facebook</small><strong data-en="Visit my profile" data-ar="زور حسابي">Visit my profile</strong></span></a>
+      <a class="contact-link reveal" href="https://instagram.com/3liazzam1?psln=MW96N2hwNXNxemc5OQ%3D%3D&utm_source=qr" target="_blank" rel="noopener"><span class="contact-icon">IG</span><span><small>Instagram</small><strong>@3liazzam1</strong></span></a>
+      <a class="contact-link reveal" href="https://www.tiktok.com/@3liazzam1?_r=1&_t=ZS-9AX56ziHq6h" target="_blank" rel="noopener"><span class="contact-icon">TK</span><span><small>TikTok</small><strong>@3liazzam1</strong></span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container footer-inner">
+  <a class="logo" href="#home">3zz<span>2m.</span></a>
+  <span>© <span id="year"></span> 3zz2m. <span data-en="Built with passion." data-ar="اتعمل بشغف.">Built with passion.</span></span>
+  <a class="gold" href="#home" data-en="Back to top ↑" data-ar="للأعلى ↑">Back to top ↑</a>
+</div></footer>
+
+<script>
+const html = document.documentElement;
+const langButton = document.getElementById('lang');
+const links = document.getElementById('links');
+const menuButton = document.getElementById('menu');
+const typing = document.getElementById('typing');
+let language = 'en', timer;
+
+const phrases = {
+  en: ['Front-End Developer', 'Future Software Engineer', 'Creative Problem Solver'],
+  ar: ['مطور واجهات ويب', 'مهندس برمجيات بالمستقبل', 'بحل المشكلات بإبداع']
+};
+
+function startTyping() {
+  clearTimeout(timer);
+  const list = phrases[language];
+  let phraseIndex = 0, letter = 0, deleting = false;
+  function tick() {
+    const phrase = list[phraseIndex];
+    typing.textContent = phrase.slice(0, letter);
+    let delay = deleting ? 45 : 85;
+    if (!deleting && letter < phrase.length) letter++;
+    else if (!deleting) { deleting = true; delay = 1200; }
+    else if (letter > 0) letter--;
+    else { deleting = false; phraseIndex = (phraseIndex + 1) % list.length; delay = 300; }
+    timer = setTimeout(tick, delay);
+  }
+  tick();
+}
+
+langButton.addEventListener('click', () => {
+  language = language === 'en' ? 'ar' : 'en';
+  html.lang = language;
+  html.dir = language === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+    el.innerHTML = el.dataset[language];
+  });
+  langButton.textContent = language === 'en' ? 'عربي' : 'EN';
+  document.title = language === 'en' ? '3zz2m | Portfolio' : '3zz2m | معرض أعمالي';
+  startTyping();
+});
+
+menuButton.addEventListener('click', () => {
+  links.classList.toggle('open');
+});
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  links.classList.remove('open');
+}));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.getElementById('year').textContent = new Date().getFullYear();
+startTyping();
+</script>
+</body>
+</html>
